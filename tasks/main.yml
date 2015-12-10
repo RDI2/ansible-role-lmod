@@ -1,2 +1,24 @@
 ---
-# tasks file for lmod
+# main tasks file for lmod
+
+- name: install epel-release
+  yum: name=epel-release state=present
+
+- name: install lua packages
+  yum: name={{ item }} state=present
+  with_items:
+    - tcl
+    - rsync
+    - gcc
+    - lua
+    - lua-devel
+    - lua-filesystem
+    - lua-posix
+
+- name: check if already installed
+  stat: path=/opt/lmod/{{ lmod_version }}
+  register: lmod_dir
+  changed_when: lmod_dir.stat.exists == False
+
+- include: install.yml
+  when: lmod_dir.stat.exists == False

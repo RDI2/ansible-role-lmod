@@ -1,2 +1,5 @@
 ---
 # defaults file for lmod
+
+lmod_version: 6.0.1
+lmod_url: http://downloads.sourceforge.net/project/lmod/Lmod-{{ lmod_version }}.tar.bz2
