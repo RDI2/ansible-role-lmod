@@ -13,6 +13,22 @@ Dependencies
 
 None.
 
+Installation
+------------
+
+Regular installation:
+
+```
+ansible-galaxy install RDI2.lmod
+```
+
+Installation to a specific directory(e.g. roles/):
+
+```
+ansible-galaxy install -p roles/ RDI2.lmod
+```
+
+
 Example Playbook
 ----------------
 
@@ -21,7 +37,7 @@ Include the role like this:
 ```yaml
 - hosts: servers
   roles:
-     - { role: rdi2sys.lmod }
+     - { role: RDI2.lmod }
 ```
 
 License
