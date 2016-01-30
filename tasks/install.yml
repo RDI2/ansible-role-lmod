@@ -7,23 +7,22 @@
 - name: extract lmod tarball
   unarchive: copy=no src=/tmp/Lmod-{{ lmod_version }}.tar.bz2 dest=/tmp creates=/tmp/Lmod-{{ lmod_version }}
 
-- name: create lmod dorectory
-  file: path=/opt/lmod state=directory owner=root group=root mode=0755
+- name: create lmod prefix dorectory
+  file: path={{ lmod_prefix }} state=directory
 
 - name: configure lmod source
-  shell: ./configure --prefix=/opt
-  args:
-    chdir: /tmp/Lmod-{{ lmod_version }}
-    creates: /tmp/Lmod-2.7.10/config.log
-
-- name: install lmod
-  shell: make install
+  shell: ./configure --prefix={{ lmod_prefix }} && make install
   args:
     chdir: /tmp/Lmod-{{ lmod_version }}
     creates: /opt/lmod/{{ lmod_version }}/bin
 
 - name: create links of profile
-  file: src=/opt/lmod/lmod/init/{{ item.src }} dest=/etc/profile.d/{{ item.dest }} owner=root group=root state=link
+  file: src={{ lmod_prefix }}/lmod/lmod/init/{{ item.src }} dest=/etc/profile.d/{{ item.dest }} owner=root group=root state=link
   with_items:
     - { src: 'profile', dest: 'modules.sh' }
     - { src: 'cshrc', dest: 'modules.csh' }
+
+- name: delete download files
+  shell: rm -rf Lmod-*
+  args:
+    chdir: /tmp

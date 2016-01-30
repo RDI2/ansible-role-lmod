@@ -18,7 +18,7 @@
     - lua-posix
 
 - name: check if already installed
-  stat: path=/opt/lmod/{{ lmod_version }}
+  stat: path={{ lmod_prefix }}/lmod/{{ lmod_version }}
   register: lmod_dir
   changed_when: lmod_dir.stat.exists == False
 
