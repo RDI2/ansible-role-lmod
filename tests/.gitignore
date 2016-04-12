@@ -1,0 +1,5 @@
+inventory
+*.retry
+SUMMARY.md
+_book/
+.role_test

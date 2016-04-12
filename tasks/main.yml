@@ -24,3 +24,9 @@
 
 - include: install.yml
   when: lmod_dir.stat.exists == False
+
+- name: delete download files
+  file: path={{ item }} state=absent
+  with_items:
+    - /tmp/Lmod-6.0.1
+    - /tmp/Lmod-6.0.1.tar.bz2
