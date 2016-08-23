@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Koji Tanaka
-  description:
+  description: Installs Lmod
   company: RDI2
   license: MIT
   min_ansible_version: 1.9
