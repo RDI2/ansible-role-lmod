@@ -28,5 +28,5 @@
 - name: delete download files
   file: path={{ item }} state=absent
   with_items:
-    - /tmp/Lmod-6.0.1
-    - /tmp/Lmod-6.0.1.tar.bz2
+    - /tmp/Lmod-{{ lmod_version }}
+    - /tmp/Lmod-{{ lmod_version }}.tar.bz2

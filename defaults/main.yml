@@ -1,7 +1,7 @@
 ---
 # defaults file for lmod
 
-lmod_version: 6.0.1
+lmod_version: 6.5
 lmod_url: http://downloads.sourceforge.net/project/lmod/Lmod-{{ lmod_version }}.tar.bz2
 lmod_prefix: /opt
 # NOTE: lmod_prefix=/opt installs lmod as /opt/lmod/{{ lmod_version }}. I don't know why,
